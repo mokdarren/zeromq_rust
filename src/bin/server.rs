@@ -1,6 +1,8 @@
 use anyhow::{Context, Result};
 use log::{self, LevelFilter};
 use simple_logger::SimpleLogger;
+use std::thread::sleep;
+use std::time::Duration;
 use zeromq_rust::{TradeEvent, PUSH_PORT};
 
 #[allow(unreachable_code)]
@@ -30,6 +32,7 @@ fn main() -> Result<()> {
             socket
                 .send(&serialised_date, 0)
                 .with_context(|| "Sending serialised trade")?;
+            sleep(Duration::from_secs(1));
             log::debug!("Sent trade #{}", trade_count);
             trade_count += 1;
         } else {
