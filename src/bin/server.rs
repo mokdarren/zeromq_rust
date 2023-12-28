@@ -38,6 +38,9 @@ fn main() -> Result<()> {
         } else {
             log::error!("Failed to serialize trade: {:?}", random_trade);
         }
+        if trade_count >= 5 {
+            break;
+        }
     }
     Ok(())
 }
