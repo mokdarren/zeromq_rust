@@ -29,13 +29,12 @@ impl TradeEvent {
 
         let symbol = symbols[rng.gen_range(0..symbols.len())];
         let quantity = rng.gen_range(0.01f64..1.0f64);
-        let scaled_quantity = (quantity * 1000.0).round() / 1000.0;
         let side = sides[rng.gen_range(0..sides.len())];
         let order_type = order_types[rng.gen_range(0..order_types.len())];
 
         TradeEvent {
             symbol: symbol.to_string(),
-            quantity: scaled_quantity,
+            quantity: quantity,
             side: side.to_string(),
             order_type: order_type.to_string(),
         }
